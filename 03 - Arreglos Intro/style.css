@@ -1,0 +1,37 @@
+body{
+    background-color:rgb(5, 73, 78);
+}
+
+#filtroAlumno{
+    border-radius: 100px;
+    padding: 10px;
+    margin: 12px;
+    display: flex;
+    justify-self: center;
+    background-color: antiquewhite;
+    border: 3px inset coral;
+}
+
+.resultado{
+    display: block;
+    justify-self: center;
+    margin: 12px;
+    padding: 10px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: larger;
+}
+
+#listaAlumnos{
+    display: flexbox;
+    padding: 10px;
+    align-content: flex-start;
+}
+
+#listaAlumnos > li{
+    padding: 6px 24px;
+    border-radius: 20px;
+    list-style-type: none;
+    margin: 10px 0px 10px 0px;
+    border: 3px inset black;
+    background-color: aliceblue;
+}
