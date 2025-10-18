@@ -114,6 +114,7 @@ input.addEventListener('input', function(e){
         console.log("display nuevo: " + listaDisplay);
     }
 
+    //Actualizar la lista en el html
     while (listaAlumnos.firstChild){
         listaAlumnos.removeChild(listaAlumnos.firstChild)
     }
@@ -121,6 +122,40 @@ input.addEventListener('input', function(e){
     for (let i = 0; i < listaDisplay.length; i++){
         let li = document.createElement('li');
         li.innerText = listaDisplay[i].nombre + " " + listaDisplay[i].apellidoMaterno + " " + listaDisplay[i].apellidoPaterno + "  " + listaDisplay[i].matricula;
+        listaAlumnos.appendChild(li);
+    }
+});
+
+//Ordenar alfabeticamente
+let orden = Boolean();
+let botonOrden = document.querySelector(".orden");
+botonOrden.addEventListener('click', function(e){
+    alumnosDisplay = Array();
+    orden = !orden;
+    //asignar orden ascendente por primera vez
+    if (orden == null){
+        orden = true;
+        alumnosDisplay = alumnos;
+    }
+    //Cambiar el orden del arreglo
+    //console.log("Ordenando, orden actual: " + orden);
+    if (orden){
+        botonOrden.innerText = "Orden: ascendente ↑";
+        alumnosDisplay = alumnos.sort((a,b) => a.nombre.localeCompare(b.nombre));
+    }
+    else{
+        botonOrden.innerText = "Orden: descendente ↓";
+        alumnosDisplay = alumnos.sort((a,b) => b.nombre.localeCompare(a.nombre));
+    }
+    console.log(alumnos);
+
+    while (listaAlumnos.firstChild){
+        listaAlumnos.removeChild(listaAlumnos.firstChild)
+    }
+
+    for (let i = 0; i < (alumnosDisplay || alumnos).length; i++){
+        let li = document.createElement('li');
+        li.innerText = (alumnosDisplay || alumnos)[i].nombre + " " + (alumnosDisplay || alumnos)[i].apellidoMaterno + " " + (alumnosDisplay || alumnos)[i].apellidoPaterno + "  " + (alumnosDisplay || alumnos)[i].matricula;
         listaAlumnos.appendChild(li);
     }
 });
